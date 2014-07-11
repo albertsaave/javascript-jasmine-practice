@@ -33,15 +33,45 @@ describe("initializes object by calling function that returns an object literal"
             return value;
           }
         };
-     })();
-
-    expect(myObj.getValue()).toEqual(0);
-    myObj.increment(3)
-    expect(myObj.getValue()).toEqual(3);
+     });
+    var someObj = myObj();
+    // expect(myObj.getValue()).toEqual(0);
+    expect(someObj.getValue()).toEqual(0);
+    someObj.increment(3)
+    // myObj.increment(3)
+    expect(someObj.getValue()).toEqual(3);
+    // expect(myObj.getValue()).toEqual(3);
+    var otherObj = myObj();
+    otherObj.increment(12);
+    expect(otherObj.getValue()).toEqual(12);
   });
 
 });
 
+describe("module", function(){
+  it("module", function(){
+    var module = (function(){
+      var x = 10;
+      y = 20;
+
+      var dob = function() {
+        x = x * 2;
+      };
+
+      dob();
+
+      return {
+        x: x
+      };
+
+    })();
+
+    expect(module.y).toBeUndefined();
+    expect(module.x).toBeDefined();
+    expect(module.x).toEqual(20);
+
+  });
+});
 
 describe("",function(){
   it("",function(){

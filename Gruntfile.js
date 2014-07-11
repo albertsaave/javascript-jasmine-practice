@@ -5,6 +5,12 @@ module.exports = function(grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
+    },
+    watch: {
+      unit: {
+        configFile: 'karma.conf.js',
+        singleRun: false
+      }
     }
   });
   grunt.loadNpmTasks('grunt-karma');
